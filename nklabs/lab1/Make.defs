@@ -1,0 +1,4 @@
+
+ifeq ($(CONFIG_NKLABS_LAB1),y)
+CONFIGURED_APPS += external/nklabs/lab1
+endif

@@ -1,0 +1,18 @@
+
+config NKLABS_LAB3
+	bool "Lab3"
+	default n
+	---help---
+		Enable Lab1
+
+if NKLABS_LAB3
+
+config NKLABS_LAB3_PROGNAME
+	string "Program name"
+	default "NK Labs"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+endif

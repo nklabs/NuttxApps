@@ -1,0 +1,3 @@
+source "$APPSDIR/external/nklabs/lab1/Kconfig"
+source "$APPSDIR/external/nklabs/lab2/Kconfig"
+source "$APPSDIR/external/nklabs/lab3/Kconfig"

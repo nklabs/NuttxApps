@@ -37,4 +37,9 @@ lab2_main.o: lab2_main.c \
  /home/ypearson/nuttx/nuttx/include/nuttx/net/net.h \
  /home/ypearson/nuttx/nuttx/include/arch/arch.h \
  /home/ypearson/nuttx/nuttx/include/nuttx/pgalloc.h \
- /home/ypearson/nuttx/nuttx/include/nuttx/addrenv.h
+ /home/ypearson/nuttx/nuttx/include/nuttx/addrenv.h \
+ /home/ypearson/nuttx/nuttx/include/string.h \
+ /home/ypearson/nuttx/nuttx/include/stddef.h \
+ /home/ypearson/nuttx/nuttx/include/ctype.h \
+ /home/ypearson/nuttx/nuttx/include/fcntl.h \
+ /home/ypearson/nuttx/nuttx/include/errno.h

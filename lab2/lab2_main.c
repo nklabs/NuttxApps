@@ -10,7 +10,7 @@
 #include <ctype.h>
 #include <fcntl.h>
 #include <pthread.h>
-#include <mqueue.h>
+#include <nuttx/mqueue.h>
 #include <sched.h>
 #include <errno.h>
 
@@ -33,12 +33,6 @@ static mqd_t recvq;
 /****************************************************************************
  * NK Labs: Lab1 
  ****************************************************************************/
-
-int lab2_main(int argc, char *argv[])
-{
-  start_tasks();
-  return 0;
-}
 
 void task3(void)
 {
@@ -78,7 +72,6 @@ void task4(void)
     struct mq_attr attr;
     char msg_buffer[32];
     int nbytes = 0;
-    int status = 0;
     int i = 0;
     memset(msg_buffer, 0x00, PAYLOAD_LEN);
     printf("sender_thread: Starting\n");
@@ -149,4 +142,10 @@ void start_tasks(void)
       pid = ret;
       printf("main: Started task2 at PID=%d\n", pid);
     }
+}
+
+int lab2_main(int argc, char *argv[])
+{
+  start_tasks();
+  return 0;
 }

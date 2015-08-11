@@ -1,15 +1,41 @@
-
+#
+# Copyright (c) 2014, 2015 Google Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 1. Redistributions of source code must retain the above copyright notice,
+# this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+# this list of conditions and the following disclaimer in the documentation
+# and/or other materials provided with the distribution.
+# 3. Neither the name of the copyright holder nor the names of its
+# contributors may be used to endorse or promote products derived from this
+# software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+# THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
 -include $(TOPDIR)/.config
 -include $(TOPDIR)/Make.defs
 include $(APPDIR)/Make.defs
+
+# GPIO built-in test application
 
 APPNAME = lab1
 PRIORITY = SCHED_PRIORITY_DEFAULT
 STACKSIZE = 2048
 
-
 ASRCS =
-CSRCS =
 MAINSRC = lab1_main.c
 
 AOBJS = $(ASRCS:.S=$(OBJEXT))
@@ -39,7 +65,7 @@ else
   INSTALL_DIR = $(BIN_DIR)
 endif
 
-CONFIG_NKLABS_LAB1_PROGNAME ?= nklabs$(EXEEXT)
+CONFIG_NKLABS_LAB1_PROGNAME ?= lab1$(EXEEXT)
 PROGNAME = $(CONFIG_NKLABS_LAB1_PROGNAME)
 
 ROOTDEPPATH = --dep-path .
@@ -49,6 +75,9 @@ ROOTDEPPATH = --dep-path .
 VPATH =
 
 all: .built
+	@true
+	@echo "Lab1 Makefile"
+
 .PHONY: clean depend distclean
 
 $(AOBJS): %$(OBJEXT): %.S
@@ -82,12 +111,14 @@ context: $(BUILTIN_REGISTRY)$(DELIM)$(APPNAME)_main.bdat
 else
 context:
 endif
+	@true
 
 .depend: Makefile $(SRCS)
 	@$(MKDEP) $(ROOTDEPPATH) "$(CC)" -- $(CFLAGS) -- $(SRCS) >Make.dep
 	@touch $@
 
 depend: .depend
+	@true
 
 clean:
 	$(call DELFILE, .built)
